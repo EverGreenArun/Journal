@@ -4,21 +4,40 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'kotlin-kapt'
+
+apply plugin: "androidx.navigation.safeargs.kotlin"
+
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.2"
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
     defaultConfig {
         applicationId "com.arun.journal"
-        minSdkVersion 25
-        targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+    }
+    dataBinding {
+        enabled = true
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "BASE_URL", '"https://dl.dropboxusercontent.com"'
+        }
+        debug {
+            debuggable true
+            buildConfigField "String", "BASE_URL", '"https://dl.dropboxusercontent.com"'
         }
     }
 }
@@ -26,10 +45,32 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.core:core-ktx:1.1.0'
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    implementation "androidx.appcompat:appcompat:$rootProject.appCompatVersion"
+    implementation "androidx.core:core-ktx:$rootProject.ktxCoreVersion"
+    implementation "androidx.legacy:legacy-support-v4:$rootProject.legacySupportVersion"
+    testImplementation "junit:junit:$rootProject.junitVersion"
+    androidTestImplementation "androidx.test.ext:junit:$rootProject.androidxJunitVersion"
+    androidTestImplementation "androidx.test:runner:$rootProject.testRunnerVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.espressoVersion"
+
+    implementation "com.google.android.material:material:$rootProject.materialVersion"
+    implementation "androidx.constraintlayout:constraintlayout:$rootProject.constraintlayoutVersion"
+
+    implementation "androidx.navigation:navigation-fragment-ktx:$rootProject.navigationVersion"
+    implementation "androidx.navigation:navigation-ui-ktx:$rootProject.navigationVersion"
+
+    implementation "androidx.legacy:legacy-support-v4:$rootProject.legacySupportVersion"
+    implementation "androidx.lifecycle:lifecycle-extensions:$rootProject.lifeCycleVersion"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$rootProject.lifeCycleVersion"
+
+    implementation "com.google.code.gson:gson:$rootProject.gsonVersion"
+    implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$rootProject.retrofitVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.retrofitLogVersion"
+
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$rootProject.coroutinesVersion"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$rootProject.coroutinesVersion"
+    implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:$rootProject.jakewhartonCoroutinesAdapterVersion"
+
+    implementation "com.facebook.fresco:fresco:$rootProject.frescoVersion"
 }
