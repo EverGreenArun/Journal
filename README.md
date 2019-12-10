@@ -1,7 +1,7 @@
 ## Journal
 ## Features:
 
-1. MVVN, LiveData, coroutines
+1. MVVM, LiveData, coroutines
 
 2. Navigation controller (navigation graph)
 
