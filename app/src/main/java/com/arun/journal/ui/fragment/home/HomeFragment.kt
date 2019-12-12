@@ -54,18 +54,14 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(),
         })
         dataBinding.recycler.adapter = journalsAdapter
         setObserver()
+        checkNetworkAndLoadData()
     }
-
-    override fun onResume() {
-        super.onResume()
-        refreshData()
-    }
-
+    
     override fun onRefresh() {
-        refreshData()
+        checkNetworkAndLoadData()
     }
 
-    private fun refreshData() {
+    private fun checkNetworkAndLoadData() {
         if (InternetUtil.isInternetOn()) {
             dataBinding.swipeContainer.isRefreshing = true
             dataBinding.tvState.text = getString(R.string.loading)
@@ -84,10 +80,20 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(),
                     is ApiSuccess<JournalResponse> -> {
                         dataBinding.tvState.text = result.data.title
                         journalsAdapter.setData(result.data.rows)
+                        if (result.data.rows.isEmpty()){
+                            dataBinding.tvState.text = getString(R.string.no_data)
+                            dataBinding.tvState.visibility = View.VISIBLE
+                            dataBinding.recycler.visibility = View.GONE
+                        }else{
+                            dataBinding.tvState.visibility = View.GONE
+                            dataBinding.recycler.visibility = View.VISIBLE
+                        }
                     }
 
                     is ApiError -> {
                         dataBinding.tvState.text = getString(R.string.api_error)
+                        dataBinding.tvState.visibility = View.VISIBLE
+                        dataBinding.recycler.visibility = View.GONE
                     }
                 }
             }

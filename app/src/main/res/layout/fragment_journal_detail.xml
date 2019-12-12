@@ -10,47 +10,51 @@
             type="com.arun.journal.data.Journal" />
     </data>
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:background="@drawable/bottom_sheet_bg"
-        android:orientation="vertical"
         app:layout_behavior="@string/bottom_sheet_behavior"
         tools:context=".ui.fragment.journaldetail.JournalDetailFragment">
-
-        <TextView
-            android:id="@+id/tv_title"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:gravity="top|start"
-            android:padding="5dp"
-            android:text="@{journal.title}"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="18sp"
-            tools:text="test" />
+            android:orientation="vertical">
 
-        <com.facebook.drawee.view.SimpleDraweeView
-            android:id="@+id/iv_image"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="8dp"
-            app:actualImageScaleType="fitCenter"
-            app:viewAspectRatio="1"
-            app:placeholderImage="@drawable/ic_image_placeholder" />
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="top|start"
+                android:padding="5dp"
+                android:text="@{journal.title}"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="18sp"
+                tools:text="test" />
 
-        <TextView
-            android:id="@+id/tv_description"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:gravity="top|start"
-            android:padding="5dp"
-            android:text="@{journal.description}"
-            android:textColor="@android:color/black"
-            android:textSize="16sp"
-            tools:text="test" />
-    </LinearLayout>
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/iv_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="8dp"
+                app:actualImageScaleType="fitCenter"
+                app:viewAspectRatio="1"
+                app:placeholderImage="@drawable/ic_image_placeholder" />
+
+            <TextView
+                android:id="@+id/tv_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:gravity="top|start"
+                android:padding="5dp"
+                android:text="@{journal.description}"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                tools:text="test" />
+        </LinearLayout>
+    </ScrollView>
 </layout>
