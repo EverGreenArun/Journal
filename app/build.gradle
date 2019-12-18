@@ -48,10 +48,6 @@ dependencies {
     implementation "androidx.appcompat:appcompat:$rootProject.appCompatVersion"
     implementation "androidx.core:core-ktx:$rootProject.ktxCoreVersion"
     implementation "androidx.legacy:legacy-support-v4:$rootProject.legacySupportVersion"
-    testImplementation "junit:junit:$rootProject.junitVersion"
-    androidTestImplementation "androidx.test.ext:junit:$rootProject.androidxJunitVersion"
-    androidTestImplementation "androidx.test:runner:$rootProject.testRunnerVersion"
-    androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.espressoVersion"
 
     implementation "com.google.android.material:material:$rootProject.materialVersion"
     implementation "androidx.constraintlayout:constraintlayout:$rootProject.constraintlayoutVersion"
@@ -73,4 +69,11 @@ dependencies {
     implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:$rootProject.jakewhartonCoroutinesAdapterVersion"
 
     implementation "com.facebook.fresco:fresco:$rootProject.frescoVersion"
+
+    testImplementation "junit:junit:$rootProject.junitVersion"
+    implementation "androidx.test:core:$rootProject.testCoreVersion"
+    implementation "androidx.test:runner:$rootProject.testRunnerVersion"
+    implementation "androidx.test:rules:$rootProject.testRuleVersion"
+    androidTestImplementation "androidx.test.ext:junit:$rootProject.androidxJunitVersion"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$rootProject.coroutinesVersion"
 }

@@ -43,15 +43,16 @@ ext {
     coroutinesVersion = "1.1.1"
     jakewhartonCoroutinesAdapterVersion = "0.9.2"
     lifeCycleVersion = "2.1.0"
-    junitVersion = "4.12"
-    androidxJunitVersion = "1.1.1"
-    testRunnerVersion = "1.2.0"
-    espressoVersion = "3.2.0"
     gsonVersion = "2.8.5"
     navigationVersion = "2.1.0"
     retrofitLogVersion = "3.12.1"
     frescoVersion = "2.0.0"
     legacySupportVersion = "1.0.0"
+    junitVersion = "4.12"
+    androidxJunitVersion = "1.1.1"
+    testRunnerVersion = "1.2.0"
+    testRuleVersion = "1.2.0"
+    testCoreVersion = "1.2.0"
 }
 
 task clean(type: Delete) {

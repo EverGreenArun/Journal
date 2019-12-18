@@ -1,39 +1,29 @@
 package com.arun.journal.ui.fragment.home
 
-import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.core.app.ApplicationProvider
 import com.arun.journal.data.JournalResponse
-import com.arun.journal.network.Api
-import com.arun.journal.network.ApiFactory
 import com.arun.journal.network.ApiSuccess
-import com.arun.journal.network.ResultHelper
+import com.arun.journal.repo.JournalsRemoteRepo
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
+import org.junit.Assert.assertTrue
+import org.junit.Before
 import org.junit.Test
 
-import org.junit.Assert.*
-import org.junit.Before
-import org.junit.runner.RunWith
-
-@RunWith(AndroidJUnit4::class)
+@ExperimentalCoroutinesApi
 class HomeViewModelTest {
-
-    private lateinit var retrofitClient: Api
+    private lateinit var viewModel: HomeViewModel
 
     @Before
-    fun init() {
-        retrofitClient = ApiFactory.makeRetrofitService()
+    fun initViewModel() {
+        viewModel = HomeViewModel(ApplicationProvider.getApplicationContext())
     }
 
     @Test
-    fun loadJournals() {
-        var isSuccess = false
+    fun loadJournalsApi_test() {
         val response = runBlocking {
-            retrofitClient.getJournalsAsync().await()
+            JournalsRemoteRepo.getJournals()
         }
-        when (ResultHelper.handleResult(response)) {
-            is ApiSuccess<JournalResponse> -> {
-                isSuccess = true
-            }
-        }
-        assertTrue(isSuccess)
+        assertTrue(response is ApiSuccess<JournalResponse> )
     }
 }
