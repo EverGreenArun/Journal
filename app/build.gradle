@@ -76,4 +76,7 @@ dependencies {
     implementation "androidx.test:rules:$rootProject.testRuleVersion"
     androidTestImplementation "androidx.test.ext:junit:$rootProject.androidxJunitVersion"
     testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$rootProject.coroutinesVersion"
+
+    debugImplementation "androidx.fragment:fragment-testing:$rootProject.fragmentVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.espressoVersion"
 }

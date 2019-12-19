@@ -53,6 +53,8 @@ ext {
     testRunnerVersion = "1.2.0"
     testRuleVersion = "1.2.0"
     testCoreVersion = "1.2.0"
+    fragmentVersion = "1.1.0"
+    espressoVersion = "3.2.0"
 }
 
 task clean(type: Delete) {
