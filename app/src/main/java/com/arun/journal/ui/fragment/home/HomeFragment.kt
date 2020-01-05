@@ -20,7 +20,6 @@ import com.arun.journal.network.ApiSuccess
 import com.arun.journal.ui.adapter.JournalsAdapter
 import com.arun.journal.ui.adapter.OnJournalClickListener
 import com.arun.journal.util.InternetUtil
-import com.arun.journal.util.NavigationHelper
 
 /**
  * Fragment for Home screen
@@ -49,7 +48,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(),
         dataBinding.swipeContainer.setOnRefreshListener(this)
         journalsAdapter = JournalsAdapter(object : OnJournalClickListener {
             override fun onJournalClick(journal: Journal) {
-                NavigationHelper.navigateToJournalDetail(findNavController(), journal)
+                findNavController().navigate(HomeFragmentDirections.actionGlobalJournalDetail(journal))
             }
         })
         dataBinding.recycler.adapter = journalsAdapter

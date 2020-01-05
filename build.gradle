@@ -55,6 +55,7 @@ ext {
     testCoreVersion = "1.2.0"
     fragmentVersion = "1.1.0"
     espressoVersion = "3.2.0"
+    mockitoVersion = "2.24.5"
 }
 
 task clean(type: Delete) {
